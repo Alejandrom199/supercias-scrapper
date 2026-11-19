@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+_prueba_octubre/
+*.xlsx
+~$*

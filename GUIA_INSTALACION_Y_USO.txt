@@ -1,0 +1,174 @@
+================================================================================
+  DESCARGA DE ESTADOS FINANCIEROS - SUPERCIAS
+  Guía de instalación y uso (aplicación con interfaz)
+================================================================================
+
+Qué hace esta aplicación
+------------------------
+Descarga automáticamente los estados financieros de casas de valores desde el
+portal de la Superintendencia de Compañías (Supercias), usando una ventana
+gráfica (no hace falta abrir Jupyter ni tocar código).
+
+
+--------------------------------------------------------------------------------
+1. REQUISITOS EN LA PC
+--------------------------------------------------------------------------------
+
+Necesitas tener instalado:
+
+  A) Python 3.10 o superior
+     Descarga: https://www.python.org/downloads/
+     IMPORTANTE al instalar:
+       - Marca la casilla "Add python.exe to PATH"
+       - Luego pulsa "Install Now"
+
+  B) Un navegador Chromium
+     La app puede usar el que elijas en la ventana:
+       - Google Chrome (recomendado): https://www.google.com/chrome/
+       - Microsoft Edge, que ya viene en Windows
+       - Chromium, el que instala Playwright en el paso 4
+     Playwright no está limitado a Chrome. Este portal se probó en Chrome.
+
+
+--------------------------------------------------------------------------------
+2. ARCHIVOS QUE DEBES TENER EN UNA CARPETA
+--------------------------------------------------------------------------------
+
+Copia estos archivos juntos en una misma carpeta, por ejemplo:
+
+  D:\Supercias\
+
+    app_supercias.py
+    supercias_core.py
+    Abrir_Supercias.bat
+    requirements_ui.txt
+    GUIA_INSTALACION_Y_USO.txt   (este archivo)
+
+
+--------------------------------------------------------------------------------
+3. INSTALACIÓN (solo la primera vez)
+--------------------------------------------------------------------------------
+
+1) Abre la carpeta donde están los archivos.
+
+2) En la barra de dirección de esa carpeta escribe:
+
+     cmd
+
+   y pulsa Enter. Se abrirá una ventana negra (símbolo del sistema)
+   ya ubicada en esa carpeta.
+
+3) Instala las librerías con este comando:
+
+     python -m pip install -r requirements_ui.txt o py -m pip install -r requirements_ui.txt
+
+4) Instala el motor de Playwright:
+
+     python -m playwright install chromium o py -m playwright install chromium
+
+5) (Opcional) Si el archivo Abrir_Supercias.bat apunta a otra ruta de Python,
+   ábrelo con el Bloc de notas y deja una línea similar a:
+
+     python "%~dp0app_supercias.py"
+
+   o, si usas un entorno virtual propio:
+
+     "C:\ruta\a\tu\python.exe" "%~dp0app_supercias.py"
+
+
+--------------------------------------------------------------------------------
+4. CÓMO ABRIR LA APLICACIÓN
+--------------------------------------------------------------------------------
+
+Opción A (recomendada):
+  Doble clic en:  Abrir_Supercias.bat
+
+Opción B:
+  En la carpeta, abre cmd y escribe:
+
+     python app_supercias.py
+
+
+--------------------------------------------------------------------------------
+5. CÓMO USARLA
+--------------------------------------------------------------------------------
+
+1) Carpeta de descarga
+   - Pulsa "Examinar" y elige dónde se guardarán los Excel.
+   - La app creará subcarpetas por mes, por ejemplo: Julio_2026
+
+2) Período
+   - Escribe el mes en formato AAAA-MM
+   - Ejemplo: 2026-07  (julio 2026)
+
+3) Navegadores en paralelo
+   - Déjalo en 1.
+   - Más de 1 navegador a la vez puede hacer que la Supercias bloquee
+     tu acceso de forma temporal. La app lo advierte y pide confirmación.
+
+4) Navegador
+   - Google Chrome, Microsoft Edge o Chromium.
+   - Si eliges Chromium, tiene que estar instalado el paso 4 de esta guía.
+
+5) Casas de valores
+   - Marca las que quieras descargar
+   - Usa "Todas" o "Ninguna" para seleccionar rápido
+
+6) Pulsa "Iniciar descarga"
+   - Se abrirá el navegador que elegiste (es normal)
+   - No cierres la aplicación mientras trabaja
+   - Verás el progreso, el log y los resultados a la derecha
+
+7) Al terminar
+   - "Abrir carpeta": ve a los archivos descargados
+   - "Exportar reporte Excel": guarda un resumen de OK / errores
+
+8) Si necesitas parar
+   - Pulsa "Detener"
+   - Terminará la tarea en curso y no lanzará más
+
+
+--------------------------------------------------------------------------------
+6. RESULTADOS POSIBLES
+--------------------------------------------------------------------------------
+
+  OK                    Descarga correcta (hay archivo Excel)
+  NO_CASA               La casa no aparece en el portal
+  NO_ESTADO_FINANCIERO  La casa existe, pero no hay documento para esa fecha
+  TIMEOUT               La página tardó demasiado (puedes reintentar)
+  ERROR_UNHANDLED       Error inesperado (revisa el mensaje en resultados)
+
+
+--------------------------------------------------------------------------------
+7. PROBLEMAS FRECUENTES
+--------------------------------------------------------------------------------
+
+"python no se reconoce como comando"
+  - Reinstala Python marcando "Add python.exe to PATH"
+  - Cierra y vuelve a abrir la ventana de cmd
+
+No se abre Chrome / error de Playwright
+  - Verifica que Chrome esté instalado
+  - Vuelve a ejecutar:  python -m playwright install chromium
+
+La ventana se abre y se cierra al instante
+  - Abre cmd en la carpeta y ejecuta:  python app_supercias.py
+  - Lee el mensaje de error que aparezca
+
+Falla el bat
+  - Edita Abrir_Supercias.bat y usa solo:  python "%~dp0app_supercias.py"
+
+
+--------------------------------------------------------------------------------
+8. NOTAS
+--------------------------------------------------------------------------------
+
+- Necesitas internet.
+- El portal de Supercias a veces va lento; los reintentos son normales.
+- Usa 1 navegador. Más de uno a la vez puede bloquear tu acceso de forma temporal.
+- Esta guía es para la versión con interfaz (CustomTkinter), no para el notebook.
+
+
+================================================================================
+  Fin de la guía
+================================================================================
