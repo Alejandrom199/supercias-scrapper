@@ -1,0 +1,3 @@
+Esta descarga no trae el programa.
+
+El paquete para instalar y abrir es Supercias-1.1.1.zip, en la misma release.

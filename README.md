@@ -8,13 +8,13 @@ Usa **1 navegador**. Si abres más de uno a la vez, la Supercias puede bloquear 
 
 ## Qué descargar
 
-En la release **1.1.1** el archivo para instalar es `requirements_ui.txt`.
+En la release **1.1.1** descarga solo `Supercias-1.1.1.zip`. Al descomprimirlo queda la carpeta del programa, con `Abrir_Supercias.bat`, la guía, este README y `requirements_ui.txt`.
 
-GitHub agrega solo dos enlaces llamados Source code. Esos no son la instalación. No los uses.
+`app_supercias.py` y `supercias_core.py` van dentro de ese zip porque el `.bat` los abre. No hay un ejecutable aparte: el acceso directo lanza esos dos archivos.
 
 ## Instalación
 
-En la carpeta del programa:
+Dentro de la carpeta descomprimida:
 
 ```
 python -m pip install -r requirements_ui.txt
